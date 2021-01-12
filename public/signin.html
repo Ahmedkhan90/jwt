@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <a href="index.html" class="A">Sign Up</a>
+    <a href="signin.html">Sign In</a>
+    <form class="login" onsubmit="return login()">
+        Email:<input type="email" id="email" placeholder="Email" required="required"><br>
+        Password:<input type="password" id="password" placeholder="Password" required="required"><br>
+        <button> Sign In</button>
+
+
+
+
+
+    </form>
+    <script>
+        var names1 = JSON.parse(localStorage.getItem("name"))
+        var emails1 = JSON.parse(localStorage.getItem("email"))
+        var passwords1 = JSON.parse(localStorage.getItem("password"))
+        var numbers1 = JSON.parse(localStorage.getItem("number"))
+        var texts1 = JSON.parse(localStorage.getItem("text"))
+        var rollno1 = JSON.parse(localStorage.getItem("rollno"))
+        var genders1 = JSON.parse(localStorage.getItem("gender"))
+
+
+
+
+        function login() {
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let isFound = false;
+
+
+            for (let i = 0; i < emails1.length; i++) {
+
+                if (email === emails1[i]) {
+                    isFound = i;
+                    break;
+                }
+            }
+
+            if (isFound === false) {
+                alert("user not found")
+            }
+            else if (passwords1[isFound] === password) {
+
+                alert("login success");
+                window.location.href = "./dashboard.html";
+
+
+            } else {
+                alert("Error Password or Username")
+            }
+
+            return false;
+        }
+    </script>
+</body>
+
+</html>
